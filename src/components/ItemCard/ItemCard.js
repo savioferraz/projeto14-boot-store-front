@@ -24,7 +24,6 @@ const Wraped = styled.div`
   img {
     width: 140px;
     height: 80px;
-    border: 1px solid;
     margin: 8px 12px;
     border-radius: 4px;
   }

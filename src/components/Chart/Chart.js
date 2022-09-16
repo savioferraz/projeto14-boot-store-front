@@ -21,9 +21,8 @@ export default function Chart() {
             <h3>Coca-Cola</h3>
             <h3>R$ 10,00</h3>
           </span>
-          <input type={number} name="Quantidade" min="1">qtd</input>
+          {/* <input type={number} name="Quantidade" min="1">qtd</input> */}
           <ion-icon name="trash-outline"></ion-icon>
-
         </ProductWrapper>
       </ContentWrapper>
 
@@ -41,20 +40,19 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  p{
+  p {
     font-family: "Roboto";
-    font-weight :500 ;
+    font-weight: 500;
     font-size: 20px;
     margin: 0 auto;
- 
   }
 `;
 
 const ProductWrapper = styled.div`
-    display: flex;
-    margin: 20px 10px 0 10px;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  margin: 20px 10px 0 10px;
+  align-items: center;
+  justify-content: space-around;
   div {
     margin-left: 10px;
     background-color: white;
