@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Footer() {
+export default function Footer({ openChart }) {
   return (
     <Wraped>
       <div>
         <h1>footer</h1>
-        <ion-icon name="cart-outline"></ion-icon>{" "}
+        <ion-icon name="cart-outline" onClick={openChart}></ion-icon>{" "}
       </div>
     </Wraped>
   );
