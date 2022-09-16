@@ -56,9 +56,8 @@ table {
     box-sizing: border-box;
 }
 body {
-	width: 100vw;
-	height: 100vh;
-	position: relative;
+	width: 400px;
+	height: 710px;
 }
 form{
 	display:flex;
