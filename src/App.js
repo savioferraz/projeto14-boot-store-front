@@ -4,6 +4,7 @@ import GlobalStyle from "./styles/GlobalStyles.js";
 import Home from "./components/Home/Home.js";
 import Login from "./components/Login/Login.js";
 import SignUp from "./components/SignUp/SignUp.js";
+import Chart from "./components/Chart/Chart.js";
 import PrivatePage from "./common/PrivatePage.js";
 import { UserProvider } from "./common/UserContext.js";
 
@@ -13,16 +14,10 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <PrivatePage>
-                <Login />
-              </PrivatePage>
-            }
-          />
+          <Route path="/" element={<PrivatePage><Login /></PrivatePage>}/>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/chart" element={<Chart/>}/>
         </Routes>
       </BrowserRouter>
     </UserProvider>
