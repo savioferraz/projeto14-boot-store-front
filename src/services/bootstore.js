@@ -1,8 +1,23 @@
 import axios from "axios";
 
-const BASE_URL = "https://localhost/5000";
+const BASE_URL = "//localhost:5000";
 
+function getListChartItems (){
+    //const config = createHeaders();
+    const promise = axios.get(`${BASE_URL}/chart`); //colocar config
+    return promise;
+}
 
+function getUserName (){
+    const promise = axios.get(`${BASE_URL}/name`);
+    return promise;
+}
+
+function getUserAddress(){
+    const promise = axios.get(`${BASE_URL}/address`);
+    return promise;
+
+}
 
 function createHeaders() {
     const auth = JSON.parse(localStorage.getItem("bootstore"));
@@ -16,6 +31,6 @@ function createHeaders() {
   }
   
   export {
-    createHeaders,
+    createHeaders,getListChartItems,getUserName ,getUserAddress, 
   };
   

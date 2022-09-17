@@ -16,8 +16,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<PrivatePage><Login /></PrivatePage>}/>
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/chart" element={<Chart/>}/>
+          <Route path="/home" element={<PrivatePage><Home /></PrivatePage>}/>
+          <Route path="/chart" element={<Chart />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
