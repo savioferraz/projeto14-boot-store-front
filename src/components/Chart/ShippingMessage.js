@@ -23,17 +23,14 @@ export default function ShippingMessage() {
 
 const TextWrapper = styled.div`
   font-size: 25px;
-  background-color: beige;
   color: black;
   text-align: center;
   margin: 0 auto;
-  position: fixed;
-  bottom: 50px;
+  position: relative;
+  top: 50px;
   left: 0;
   margin: auto 10%; 
-  border: 2px solid darkgray;
-  padding: 10px;
-  border-radius: 5px;
+
   span {
     font-style: italic;
     color: darkblue;

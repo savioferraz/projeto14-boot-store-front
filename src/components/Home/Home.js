@@ -4,9 +4,11 @@ import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import ItemCard from "../ItemCard/ItemCard.js";
 import ItemModal from "../ItemCard/ItemModal.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function Home() {
         <ItemCard openModal={() => setModal(true)} />
         <ItemCard openModal={() => setModal(true)} />
       </Wraped>
-      <Footer />
+      <Footer openChart={() => navigate("/chart")}/>
     </>
   );
 }

@@ -1,17 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-//import Input from "../Inputs/Input.js";
-//import Button from "../Buttons/Button.js";
-//import { Link, useNavigate } from "react-router-dom";
-//import UserContext from "../../common/UserContext.js";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header.js";
 import ChartFooter from "../Chart/ChartFooter";
-import { getListChartItems } from "../../services/bootstore";
+import { getListChartItems, deleteItem } from "../../services/bootstore";
 import ShippingMessage from "../Chart/ShippingMessage";
 import styled from "styled-components";
 
 export default function Chart() {
   const [chartItems, setChartItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getChartItems();
@@ -28,52 +26,132 @@ export default function Chart() {
         alert("Erro ao carregar carrinho");
       });
   }
+
+  function deleteChartItem(id) {
+    const confirmDelete = window.confirm(
+      "Tem certeza de que gostaria de excluir esse item do seu carrinho?"
+    );
+    if (confirmDelete) {
+      deleteItem(id)
+        .then(() => {
+          getChartItems();
+        })
+        .catch((err) => {
+          alert("Erro ao deletar item do carrinho.");
+          console.log(err);
+        });
+    }
+  }
   return (
     <>
       <Header />
+      <TitleWrapper> Meu Carrinho</TitleWrapper>
       <ContentWrapper>
-        <p>Meu Carrinho</p>
         {chartItems.length === 0 ? (
           <TextWrapper>
             <p>
-              Você não tem nenhum nenhum item no carrinho. Adicione itens para
-              realizar a compra!
+              Você não tem nenhum item no carrinho. Adicione itens para realizar
+              a compra!
             </p>
+            <HomeButtonWrapper>
+              <button onClick={() => navigate("/home")}>
+                Voltar para tela de compras
+              </button>
+            </HomeButtonWrapper>
           </TextWrapper>
         ) : (
-          chartItems.map((value) => (
-            <ProductWrapper>
-              <img src={value.img} />
-              <span>
-                <p>{value.product}</p>
-                <h3>R$ {(Math.round(value.price) / 100).toFixed(2).replace(".",",")}</h3>
-              </span>
-              Qtd: {value.amount} <ion-icon name="trash-outline"></ion-icon>
-            </ProductWrapper>
-          ))
+          <>
+            {chartItems.map((value) => (
+              <>
+                <ProductWrapper key={value.id}>
+                  <img src={value.img} />
+                  <span>
+                    <p>{value.product}</p>
+                    <h3>
+                      R${" "}
+                      {(Math.round(value.price) / 100)
+                        .toFixed(2)
+                        .replace(".", ",")}
+                    </h3>
+                  </span>
+                  Qtd: <h4>{value.amount}</h4>
+                  <ion-icon
+                    name="trash-outline"
+                    onClick={() => deleteChartItem(value.id)}
+                  ></ion-icon>
+                </ProductWrapper>
+                <ProductWrapper key={value.id + 1}>
+                  <img src={value.img} />
+                  <span>
+                    <p>{value.product}</p>
+                    <h3>
+                      R${" "}
+                      {(Math.round(value.price) / 100)
+                        .toFixed(2)
+                        .replace(".", ",")}
+                    </h3>
+                  </span>
+                  Qtd: <h4>{value.amount}</h4>
+                  <ion-icon
+                    name="trash-outline"
+                    onClick={() => deleteChartItem(value.id)}
+                  ></ion-icon>
+                </ProductWrapper>
+                <ProductWrapper key={value.id + 2}>
+                  <img src={value.img} />
+                  <span>
+                    <p>{value.product}</p>
+                    <h3>
+                      R${" "}
+                      {(Math.round(value.price) / 100)
+                        .toFixed(2)
+                        .replace(".", ",")}
+                    </h3>
+                  </span>
+                  Qtd: <h4>{value.amount}</h4>
+                  <ion-icon
+                    name="trash-outline"
+                    onClick={() => deleteChartItem(value.id)}
+                  ></ion-icon>
+                </ProductWrapper>
+              </>
+            ))}
+          </>
         )}
-        <ShippingMessage />
       </ContentWrapper>
+      {chartItems.length === 0 ? (
+        <></>
+      ) : (
+        <>
+          <FinalizePurchaseButton>
+            <button>Finalizar Compra</button>
+          </FinalizePurchaseButton>
+          <ShippingMessage />
+        </>
+      )}
       <ChartFooter total={total} />
     </>
   );
 }
-
+const TitleWrapper = styled.div`
+  z-index: 1;
+  position: relative;
+  top: 40px;
+  left: 0;
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 30px;
+  margin: 3% auto;
+  `;
 const ContentWrapper = styled.div`
   width: 400px;
-  height: 646px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   overflow: auto;
   position: relative;
   top: 30px;
-
-  p {
-    font-family: "Roboto";
-    font-weight: 600;
-    font-size: 25px;
-    margin: 3% auto;
-  }
 `;
 
 const ProductWrapper = styled.div`
@@ -85,6 +163,13 @@ const ProductWrapper = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 5px;
+  background-color: #fafafa;
+  h4 {
+    font-size: 17px;
+    padding: 1px 4px;
+    border: 1px solid gray;
+    border-radius: 2px;
+  }
 
   div {
     margin-left: 10px;
@@ -114,18 +199,63 @@ const ProductWrapper = styled.div`
   input {
     width: 20px;
   }
-  h3{
+  h3 {
     font-size: 20px;
     margin-left: 10px;
   }
-  ion-icon{
+
+  ion-icon {
     color: red;
   }
 `;
 
 const TextWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
   p {
     font-family: "Roboto";
+    font-weight: 300;
     color: black;
+    font-size: 30px;
+  }
+`;
+
+const HomeButtonWrapper = styled.div`
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 250px;
+    color: grey;
+    font-size: 20px;
+    background-color: #fafafa;
+    font-family: "Roboto";
+    border: 1px dotted darkgrey;
+    border-radius: 50px;
+  }
+`;
+
+const FinalizePurchaseButton = styled.div`
+  width: 100%;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+
+  button {
+    font-size: 15px;
+    font-family: "Roboto";
+    font-weight: 700;
+    text-align: center;
+    margin: 0 auto;
+
+    margin: auto 0;
+    border: 2px solid gray;
+    padding: 10px;
+    border-radius: 20px;
   }
 `;

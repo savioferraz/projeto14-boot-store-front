@@ -35,13 +35,14 @@ const Wraped = styled.header`
   color: #ffffff;
   position: fixed;
   top: 0;
-  
+  z-index: 1;
   div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin: 0 15px 0 15px; 
+
       }
   ion-icon {
     font-size: 32px;

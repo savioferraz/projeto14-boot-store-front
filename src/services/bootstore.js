@@ -19,6 +19,12 @@ function getUserAddress(){
 
 }
 
+function deleteItem(id) {
+    //const config = createHeaders();
+    const promise = axios.delete(`${BASE_URL}/deleteItem/${id}`);
+    return promise;
+  }
+
 function createHeaders() {
     const auth = JSON.parse(localStorage.getItem("bootstore"));
     const config = {
@@ -31,6 +37,6 @@ function createHeaders() {
   }
   
   export {
-    createHeaders,getListChartItems,getUserName ,getUserAddress, 
+    createHeaders,getListChartItems,getUserName ,getUserAddress,deleteItem 
   };
   
