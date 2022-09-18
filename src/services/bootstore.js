@@ -3,25 +3,27 @@ import axios from "axios";
 const BASE_URL = "//localhost:5000";
 
 function getListChartItems (){
-    //const config = createHeaders();
-    const promise = axios.get(`${BASE_URL}/chart`); //colocar config
+    const config = createHeaders();
+    const promise = axios.get(`${BASE_URL}/chart`, config); 
     return promise;
 }
 
 function getUserName (){
-    const promise = axios.get(`${BASE_URL}/name`);
+  const config = createHeaders();
+    const promise = axios.get(`${BASE_URL}/name`, config);
     return promise;
 }
 
 function getUserAddress(){
-    const promise = axios.get(`${BASE_URL}/address`);
+  const config = createHeaders();
+    const promise = axios.get(`${BASE_URL}/address`,config);
     return promise;
 
 }
 
 function deleteItem(id) {
-    //const config = createHeaders();
-    const promise = axios.delete(`${BASE_URL}/deleteItem/${id}`);
+    const config = createHeaders();
+    const promise = axios.delete(`${BASE_URL}/deleteItem/${id}`, config);
     return promise;
   }
 
