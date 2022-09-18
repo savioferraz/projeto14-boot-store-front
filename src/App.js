@@ -18,7 +18,7 @@ export default function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/home" element={<PrivatePage><Home /></PrivatePage>}/>
           <Route path="/chart" element={<PrivatePage><Chart /></PrivatePage>}/>
-          </Routes>
+        </Routes>
       </BrowserRouter>
     </UserProvider>
   );
