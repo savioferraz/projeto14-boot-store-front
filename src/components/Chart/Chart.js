@@ -4,11 +4,13 @@ import Header from "../Header/Header.js";
 import ChartFooter from "../Chart/ChartFooter";
 import { getListChartItems, deleteItem } from "../../services/bootstore";
 import ShippingMessage from "../Chart/ShippingMessage";
+import ChartModal from "./ChartModal.js";
 import styled from "styled-components";
 
 export default function Chart() {
   const [chartItems, setChartItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,10 +44,20 @@ export default function Chart() {
         });
     }
   }
+
   return (
     <>
+      {isOpen ? (
+        <ChartModal
+          onClick={() => setIsOpen(false)}
+          total={(Math.round(total) / 100).toFixed(2).replace(".", ",")}
+        />
+      ) : (
+        <></>
+      )}
       <Header />
       <TitleWrapper> Meu Carrinho</TitleWrapper>
+
       <ContentWrapper>
         {chartItems.length === 0 ? (
           <TextWrapper>
@@ -80,40 +92,6 @@ export default function Chart() {
                     onClick={() => deleteChartItem(value.id)}
                   ></ion-icon>
                 </ProductWrapper>
-                <ProductWrapper key={value.id + 1}>
-                  <img src={value.img} />
-                  <span>
-                    <p>{value.product}</p>
-                    <h3>
-                      R${" "}
-                      {(Math.round(value.price) / 100)
-                        .toFixed(2)
-                        .replace(".", ",")}
-                    </h3>
-                  </span>
-                  Qtd: <h4>{value.amount}</h4>
-                  <ion-icon
-                    name="trash-outline"
-                    onClick={() => deleteChartItem(value.id)}
-                  ></ion-icon>
-                </ProductWrapper>
-                <ProductWrapper key={value.id + 2}>
-                  <img src={value.img} />
-                  <span>
-                    <p>{value.product}</p>
-                    <h3>
-                      R${" "}
-                      {(Math.round(value.price) / 100)
-                        .toFixed(2)
-                        .replace(".", ",")}
-                    </h3>
-                  </span>
-                  Qtd: <h4>{value.amount}</h4>
-                  <ion-icon
-                    name="trash-outline"
-                    onClick={() => deleteChartItem(value.id)}
-                  ></ion-icon>
-                </ProductWrapper>
               </>
             ))}
           </>
@@ -124,7 +102,7 @@ export default function Chart() {
       ) : (
         <>
           <FinalizePurchaseButton>
-            <button>Finalizar Compra</button>
+            <button onClick={() => setIsOpen(true)}>Finalizar Compra</button>
           </FinalizePurchaseButton>
           <ShippingMessage />
         </>
@@ -143,10 +121,10 @@ const TitleWrapper = styled.div`
   font-weight: 400;
   font-size: 30px;
   margin: 3% auto;
-  `;
+`;
 const ContentWrapper = styled.div`
   width: 400px;
-  height: 500px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   overflow: auto;
