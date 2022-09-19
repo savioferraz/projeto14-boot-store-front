@@ -16,8 +16,8 @@ export default function ChartFooter({total}) {
 
 const Wrapper = styled.footer`
   width: 400px;
-  height: 32px;
-  background-color: #000000;
+  height: 50px;
+  background-color: #064420;
   color: #ffffff;
   position: fixed;
   bottom: 0;
