@@ -1,13 +1,21 @@
 import styled from "styled-components";
-import react from "react";
+import { logout } from "../../services/bootstore.js" 
 import { useNavigate } from "react-router-dom";
 
 export default function ChartModal({ total, onClick }) {
     const navigate = useNavigate();
-
+    
     function confirmPurchase(){
-        alert("Obrigado por realizar a compra!");
-        navigate("/login")
+        alert(`Obrigado por realizar a compra! \n Sua sessão será finalizada!` );
+        logout()
+        .then((response) => {
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Erro ao deslogar");
+        });
+        
         return 
     }
   return (
