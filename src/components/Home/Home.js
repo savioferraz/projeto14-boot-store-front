@@ -4,7 +4,6 @@ import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import ItemCard from "../ItemCard/ItemCard.js";
 import ItemModal from "../ItemCard/ItemModal.js";
-import { getProducts } from "../../services/bootstore.js";
 
 export default function Home() {
   const [modal, setModal] = useState(false);
@@ -33,7 +32,7 @@ export default function Home() {
           />
         ))}
       </Wraped>
-      <Footer />
+      <Footer openChart={() => navigate("/chart")} />
     </>
   );
 }
