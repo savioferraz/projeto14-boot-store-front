@@ -18,7 +18,7 @@ const Wraped = styled.div`
   flex-direction: column;
   border-radius: 4px;
   border: 1px solid lightgray;
-  box-shadow: 2px 2px 4px 1px grey;
+  box-shadow: 2px 2px 4px 1px gray;
   margin: 12px;
   background-color: #e4efe7;
   color: #064420;

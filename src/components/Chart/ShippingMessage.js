@@ -18,7 +18,10 @@ export default function ShippingMessage() {
         console.log(err);
       });
   }
-  return <TextWrapper>Frete para <span> {userAddress} </span>- Grátis!</TextWrapper>;
+  return ( <TextWrapper> Frete gráitis para o seu endereço</TextWrapper>
+    //   Frete para <span> {userAddress} </span>- Grátis!
+     
+  );
 }
 
 const TextWrapper = styled.div`
@@ -26,15 +29,13 @@ const TextWrapper = styled.div`
   color: black;
   text-align: center;
   margin: 0 auto;
-  position: relative;
-  top: 50px;
+  position: fixed;
+  bottom: 120px;
   left: 0;
-  margin: auto 10%; 
+  margin: auto 05%;
 
   span {
     font-style: italic;
     color: darkblue;
-
   }
-
 `;

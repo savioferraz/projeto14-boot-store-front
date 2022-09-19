@@ -112,15 +112,18 @@ export default function Chart() {
   );
 }
 const TitleWrapper = styled.div`
-  z-index: 1;
+ 
   position: relative;
-  top: 40px;
+  top: 60px;
   left: 0;
+  padding-bottom: 18px;
   text-align: center;
   font-family: "Roboto";
   font-weight: 400;
   font-size: 30px;
   margin: 3% auto;
+  color: #064420;
+  background-color: #fdfaf6;
 `;
 const ContentWrapper = styled.div`
   width: 400px;
@@ -130,6 +133,7 @@ const ContentWrapper = styled.div`
   overflow: auto;
   position: relative;
   top: 30px;
+  background-color: #fdfaf6;
 `;
 
 const ProductWrapper = styled.div`
@@ -141,12 +145,13 @@ const ProductWrapper = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 5px;
-  background-color: #fafafa;
+  background-color:  #e4efe7;
   h4 {
     font-size: 17px;
     padding: 1px 4px;
     border: 1px solid gray;
     border-radius: 2px;
+    background-color: white;
   }
 
   div {
@@ -193,11 +198,15 @@ const TextWrapper = styled.div`
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  background-color: #fdfaf6;
+
   p {
     font-family: "Roboto";
     font-weight: 300;
-    color: black;
+    color: #064420;
     font-size: 30px;
+    margin-top: 20%;
+    margin-bottom: 25px;
   }
 `;
 
@@ -206,9 +215,9 @@ const HomeButtonWrapper = styled.div`
     margin-top: 10px;
     padding: 10px;
     width: 250px;
-    color: grey;
+    color: white;
     font-size: 20px;
-    background-color: #fafafa;
+    background-color:  #064420;
     font-family: "Roboto";
     border: 1px dotted darkgrey;
     border-radius: 50px;
@@ -221,7 +230,7 @@ const FinalizePurchaseButton = styled.div`
   display: flex;
   justify-content: center;
   position: fixed;
-  bottom: 40px;
+  bottom: 60px;
   left: 0;
 
   button {
@@ -230,10 +239,11 @@ const FinalizePurchaseButton = styled.div`
     font-weight: 700;
     text-align: center;
     margin: 0 auto;
-
+    color: white;
     margin: auto 0;
-    border: 2px solid gray;
+    border: 2px solid  #064420;
     padding: 10px;
     border-radius: 20px;
+    background-color:  #064420;
   }
 `;

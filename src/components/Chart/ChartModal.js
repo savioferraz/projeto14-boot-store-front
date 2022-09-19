@@ -22,7 +22,7 @@ export default function ChartModal({ total, onClick }) {
     <ModalWrapper>
       <TextWrapper>
         <div>
-          <ion-icon name="close-circle-outline" onClick={onClick}></ion-icon>
+          <ion-icon name="close-circle" onClick={onClick}></ion-icon>
           <h1>
             Compra no valor total de: <p>R${total}</p>
           </h1>
@@ -54,12 +54,11 @@ const ModalWrapper = styled.body`
     height: 40%;
     border-radius: 40px;
     border: 2px solid lightgray;
-    background-color: white;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #fdfaf6;
   }
 
  
@@ -73,35 +72,38 @@ const TextWrapper = styled.div`
 
   }
   ion-icon {
-    color: gray;
+    color: #064420;
     font-size: 35px;
     position: relative;
     bottom: 15px;
     left: 120px;
+    
   }
   h1 {
     font-family: "Roboto";
-    font-weight: 500;
+    font-weight: 600;
     font-size: 20px;
     text-align: center;
     position: relative;
     bottom: 0;
+    color: #064420;
   }
   p {
     padding-top: 10px;
-    color: darkgrey;
+    color: #064420;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 700;
   }
 `;
 const ButtonWrapper = styled.div`
  button{
-    background-color: lightgray;
+    background-color: #064420;
     font-family: "Roboto";
     font-size: 20px;
     padding: 10px 20px;
     border-radius: 40px;
     border: 1px solid gray;
+    color :white;
     
  }
 `;

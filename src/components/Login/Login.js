@@ -52,13 +52,26 @@ export default function Login() {
 const Wraped = styled.div`
   background-color: #fdfaf6;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+  a{
+    margin-top: 15px;
+    color: #064420;
+    text-decoration: none;
+    
+  }
   h1 {
     color: #064420;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 21px;
     line-height: 21px;
     margin: 12px;
   }

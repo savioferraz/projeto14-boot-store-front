@@ -27,9 +27,9 @@ export default function App() {
           <Route
             path="/chart"
             element={
-              <PrivatePage>
+              
                 <Chart />
-              </PrivatePage>
+              
             }
           />
         </Routes>

@@ -48,6 +48,15 @@ function logout() {
   return promise;
 }
 
+function updateChart (product_id, amount) {
+  const config = createHeaders();
+  const data = {
+    product_id, amount
+  };
+  const promise = axios.put(`${BASE_URL}/updateChart`, data, config);
+  return promise;
+}
+
 function createHeaders() {
   const auth = JSON.parse(localStorage.getItem("bootstore"));
   const config = {
@@ -69,4 +78,5 @@ export {
   getProducts,
   postSignUp,
   postLogin,
+  updateChart,
 };
