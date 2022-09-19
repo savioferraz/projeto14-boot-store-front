@@ -56,6 +56,7 @@ table {
     box-sizing: border-box;
 }
 body {
+	font-family: Roboto, sans-serif;
 	width: 400px;
 	height: 710px;
 }

@@ -14,10 +14,24 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<PrivatePage><Login /></PrivatePage>}/>
+          <Route
+            path="/"
+            element={
+              <PrivatePage>
+                <Login />
+              </PrivatePage>
+            }
+          />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/home" element={<PrivatePage><Home /></PrivatePage>}/>
-          <Route path="/chart" element={<PrivatePage><Chart /></PrivatePage>}/>
+          <Route path="/home" element={<Home />} />
+          <Route
+            path="/chart"
+            element={
+              <PrivatePage>
+                <Chart />
+              </PrivatePage>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </UserProvider>
