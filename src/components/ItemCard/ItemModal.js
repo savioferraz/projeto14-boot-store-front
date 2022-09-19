@@ -3,14 +3,22 @@ import styled from "styled-components";
 import UserContext from "../../common/UserContext.js";
 import Button from "../Buttons/Button.js";
 import Input from "../Inputs/Input.js";
+import { updateChart } from "../../services/bootstore.js";
 
-export default function ItemModal({ image, itemName, price, desc, cancel }) {
+export default function ItemModal({ image, itemName, price, desc, cancel, product_id }) {
   const { amount, setAmount } = useContext(UserContext);
 
   function handleForm(e) {
     e.preventDefault();
+    
+    updateChart(product_id, amount).then((response) => {
+      console.log(response)      
+    })
+    .catch((err) => {
+      console.log(err);
+      alert("Não foi possível adicionar o item ao carrinho.");
+    });
   }
-
   return (
     <Wrapper>
       <ion-icon name="close-circle" onClick={cancel}></ion-icon>

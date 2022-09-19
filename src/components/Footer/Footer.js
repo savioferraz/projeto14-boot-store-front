@@ -1,12 +1,14 @@
 import React from "react";
+import {useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Footer({ openChart }) {
+export default function Footer() {
+  const navigate = useNavigate();
   return (
     <Wraped>
       <div>
         <h1>Cesta de Compras</h1>
-        <ion-icon name="cart-outline" onClick={openChart}></ion-icon>{" "}
+        <ion-icon name="cart-outline" onClick={() => navigate("/chart")}></ion-icon>{" "}
       </div>
     </Wraped>
   );

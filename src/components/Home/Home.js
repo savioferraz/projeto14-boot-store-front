@@ -38,6 +38,7 @@ export default function Home() {
             price={`${modalData.price / 100},00`}
             desc={modalData.desc}
             cancel={() => setModal(false)}
+            product_id={modalData._id}
           ></ItemModal>
         ) : (
           <></>
@@ -52,7 +53,7 @@ export default function Home() {
           />
         ))}
       </Wraped>
-      <Footer openChart={() => navigate("/chart")} />
+      <Footer />
     </>
   );
 }
