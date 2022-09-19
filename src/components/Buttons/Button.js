@@ -15,8 +15,11 @@ export default function Button({
 }
 
 const Wraped = styled.button`
-  background-color: #000000;
+  background-color: #064420;
   color: #ffffff;
+  font-size: 24px;
+  box-shadow: 1px 1px 4px 1px grey;
+  font-weight: 700;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   text-align: center;

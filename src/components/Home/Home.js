@@ -4,10 +4,14 @@ import Header from "../Header/Header.js";
 import Footer from "../Footer/Footer.js";
 import ItemCard from "../ItemCard/ItemCard.js";
 import ItemModal from "../ItemCard/ItemModal.js";
+import { getProducts } from "../../services/bootstore.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   const [modal, setModal] = useState(false);
   const [products, setProducts] = useState([]);
+  const [modalData, setModalData] = useState([]);
 
   useEffect(() => {
     getProducts()
@@ -15,20 +19,36 @@ export default function Home() {
         setProducts(answer.data);
       })
       .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
-    console.log(products);
   }, []);
+
+  const selectProduct = ({ product }) => {
+    setModalData(product);
+    setModal(true);
+    console.log(modalData);
+  };
 
   return (
     <>
       <Header />
       <Wraped>
-        {modal ? <ItemModal cancel={() => setModal(false)}></ItemModal> : <></>}
+        {modal ? (
+          <ItemModal
+            image={modalData.img}
+            itemName={modalData.product}
+            price={`${modalData.price / 100},00`}
+            desc={modalData.desc}
+            cancel={() => setModal(false)}
+          ></ItemModal>
+        ) : (
+          <></>
+        )}
         {products.map((product) => (
           <ItemCard
-            openModal={() => setModal(true)}
+            key={product.index}
+            openModal={() => selectProduct({ product })}
             itemName={product.product}
             image={product.img}
-            value={product.price}
+            price={product.price / 100}
           />
         ))}
       </Wraped>
@@ -38,10 +58,10 @@ export default function Home() {
 }
 
 const Wraped = styled.div`
-  background-color: lightgray;
+  background-color: #fdfaf6;
   width: 100%;
   height: 646px;
-  margin: 32px auto;
+  margin: 50px auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { postSignUp } from "../../services/bootstore.js";
 import Button from "../Buttons/Button.js";
 import Input from "../Inputs/Input.js";
 
@@ -13,19 +15,19 @@ export default function SignUp() {
 
   function handleForm(e) {
     e.preventDefault();
-    // postSignUp(body)
-    //   .then((ans) => {
-    //     const token = ans.data;
-    //     const authJSON = JSON.stringify({ token });
-    //     localStorage.setItem("bootstore", authJSON);
-    //     navigate("/home");
-    //   })
-    //   .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
+    postSignUp(body)
+      .then((ans) => {
+        const token = ans.data;
+        const authJSON = JSON.stringify({ token });
+        localStorage.setItem("bootstore", authJSON);
+        navigate("/home");
+      })
+      .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
   }
 
   return (
-    <>
-      <h1>Boot Store</h1>
+    <Wraped>
+      <h1>Driven Eats +</h1>
       <form onSubmit={handleForm}>
         <Input
           placeholder={"Nome"}
@@ -58,6 +60,22 @@ export default function SignUp() {
         <Button type="submit">Cadastrar</Button>
       </form>
       <Link to="/">Já tem uma conta? Faça o Login</Link>
-    </>
+    </Wraped>
   );
 }
+
+const Wraped = styled.div`
+  background-color: #fdfaf6;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  h1 {
+    color: #064420;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    margin: 12px;
+  }
+`;

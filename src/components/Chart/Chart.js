@@ -137,8 +137,6 @@ const ProductWrapper = styled.div`
   margin: 20px 10px 0 10px;
   align-items: center;
   justify-content: space-around;
-<<<<<<< HEAD
-=======
   font-size: 17px;
   border: 1px solid lightgray;
   border-radius: 10px;
@@ -151,7 +149,6 @@ const ProductWrapper = styled.div`
     border-radius: 2px;
   }
 
->>>>>>> 7590484716ffe6a42a2e2de53d4ea5fe14a0e905
   div {
     margin-left: 10px;
     background-color: white;

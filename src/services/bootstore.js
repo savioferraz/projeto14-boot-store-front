@@ -2,6 +2,16 @@ import axios from "axios";
 
 const BASE_URL = "//localhost:5000";
 
+function postSignUp(body) {
+  const promise = axios.post(`${BASE_URL}/sign-up`, body);
+  return promise;
+}
+
+function postLogin(body) {
+  const promise = axios.post(`${BASE_URL}/login`, body);
+  return promise;
+}
+
 function getListChartItems() {
   const config = createHeaders();
   const promise = axios.get(`${BASE_URL}/chart`, config);
@@ -11,6 +21,12 @@ function getListChartItems() {
 function getUserName() {
   const config = createHeaders();
   const promise = axios.get(`${BASE_URL}/name`, config);
+  return promise;
+}
+
+function getProducts() {
+  const config = createHeaders();
+  const promise = axios.get(`${BASE_URL}/products`, config);
   return promise;
 }
 
@@ -50,4 +66,7 @@ export {
   getUserAddress,
   deleteItem,
   logout,
+  getProducts,
+  postSignUp,
+  postLogin,
 };

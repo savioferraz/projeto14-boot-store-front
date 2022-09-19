@@ -3,6 +3,8 @@ import Input from "../Inputs/Input.js";
 import Button from "../Buttons/Button.js";
 import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../common/UserContext.js";
+import { postLogin } from "../../services/bootstore.js";
+import styled from "styled-components";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,19 +14,19 @@ export default function Login() {
 
   function handleForm(e) {
     e.preventDefault();
-    // postLogin(body)
-    //   .then((ans) => {
-    //     const token = ans.data;
-    //     const authJSON = JSON.stringify({ token });
-    //     localStorage.setItem("bootstore", authJSON);
-    //     navigate("/home");
-    //   })
-    //   .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
+    postLogin(body)
+      .then((ans) => {
+        const token = ans.data;
+        const authJSON = JSON.stringify({ token });
+        localStorage.setItem("bootstore", authJSON);
+        navigate("/home");
+      })
+      .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
   }
 
   return (
-    <>
-      <h1>Boot Store</h1>
+    <Wraped>
+      <h1>Driven Eats +</h1>
       <form onSubmit={handleForm}>
         <Input
           placeholder={"E-mail"}
@@ -43,6 +45,21 @@ export default function Login() {
         <Button type="submit">Entrar</Button>
       </form>
       <Link to="/sign-up">Criar uma conta</Link>
-    </>
+    </Wraped>
   );
 }
+
+const Wraped = styled.div`
+  background-color: #fdfaf6;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    color: #064420;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    margin: 12px;
+  }
+`;

@@ -4,7 +4,7 @@ import UserContext from "../../common/UserContext.js";
 import Button from "../Buttons/Button.js";
 import Input from "../Inputs/Input.js";
 
-export default function ItemModal({ image, itemName, value, cancel }) {
+export default function ItemModal({ image, itemName, price, desc, cancel }) {
   const { amount, setAmount } = useContext(UserContext);
 
   function handleForm(e) {
@@ -16,11 +16,14 @@ export default function ItemModal({ image, itemName, value, cancel }) {
       <ion-icon name="close-circle" onClick={cancel}></ion-icon>
       <Box>
         <img src={image} alt="img" />
-        <p>
-          {itemName} <span>R$ {value}</span>
-        </p>
+        <h1>
+          {itemName} <span>R$ {price}</span>
+        </h1>
+        <p>{desc}</p>
         <form onSubmit={handleForm}>
           <Input
+            width="50px"
+            height="46px"
             placeholder={"Quantidade"}
             type={"number"}
             min="1"
@@ -28,7 +31,9 @@ export default function ItemModal({ image, itemName, value, cancel }) {
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />
-          <Button type="submit">Adicionar ao Carrinho</Button>
+          <Button width="200px" type="submit">
+            Adicionar
+          </Button>
         </form>
       </Box>
     </Wrapper>
@@ -36,7 +41,7 @@ export default function ItemModal({ image, itemName, value, cancel }) {
 }
 
 const Wrapper = styled.div`
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.35);
   width: 400px;
   height: 710px;
   display: flex;
@@ -49,25 +54,29 @@ const Wrapper = styled.div`
     top: 5%;
     right: 10%;
     font-size: 36px;
-    color: black;
+    color: #064420;
   }
 `;
 
 const Box = styled.div`
   width: 300px;
-  height: 350px;
-  background: #ffffff;
+  height: 380px;
+  background: #fdfaf6;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   img {
     width: 264px;
     height: 174px;
     margin: 12px auto;
-    border: 1px solid;
   }
-  p {
-    color: #000000;
+  h1 {
+    color: #064420;
     font-weight: 700;
     font-size: 18px;
     line-height: 21px;
@@ -75,6 +84,11 @@ const Box = styled.div`
     flex-direction: row;
     justify-content: space-between;
     margin: 12px;
+  }
+  p {
+    color: #064420;
+    font-size: 16px;
+    margin: 4px 12px;
   }
   div {
     display: flex;
