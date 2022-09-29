@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "//localhost:5000";
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 function postSignUp(body) {
   const promise = axios.post(`${BASE_URL}/sign-up`, body);
@@ -48,10 +48,11 @@ function logout() {
   return promise;
 }
 
-function updateChart (product_id, amount) {
+function updateChart(product_id, amount) {
   const config = createHeaders();
   const data = {
-    product_id, amount
+    product_id,
+    amount,
   };
   const promise = axios.put(`${BASE_URL}/updateChart`, data, config);
   return promise;
